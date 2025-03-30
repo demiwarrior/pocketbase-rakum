@@ -1,0 +1,3 @@
+pb_data/*      # Ignore database data (optional)
+pocketbase.exe # Ignore Windows executable
+node_modules/
