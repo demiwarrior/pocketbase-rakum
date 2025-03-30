@@ -4,12 +4,10 @@ FROM alpine:latest
 # Set working directory
 WORKDIR /pb
 
-# Copy files into container
-COPY pocketbase /pb/pocketbase
-COPY pb_data /pb/pb_data
-
-# Set execution permissions
-RUN chmod +x /pb/pocketbase
+# Download latest PocketBase release inside the container
+RUN wget -O pocketbase.zip https://github.com/pocketbase/pocketbase/releases/latest/download/pocketbase-linux-amd64.zip \
+    && unzip pocketbase.zip && rm pocketbase.zip \
+    && chmod +x pocketbase
 
 # Expose PocketBase port
 EXPOSE 8090
